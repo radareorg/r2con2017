@@ -1,0 +1,40 @@
+r2 unpacking cheatsheet
+=======================
+ 
+Follow Execution Flow
+---------------------
+ 
+r2 -d <file_path>: opens file in r2 for debugging
+dc: continues execution
+ds: single step
+dcr: continues until stack frame return
+dr <register>: shows the value of specified register
+ 
+Breakpoints
+-----------
+ 
+db <address>: sets software breakpoint on specified address
+dbc <address> <r2_cmd>: assigns r2 command to be executed when bp on address is triggered
+drx <number> <address> <len> <rwx>: sets hardware breakpoint on specified address range (by address and len) when accessed for read, write or execute
+db- <address>: removes software breakpoint on specified address
+drx- <number>: removes hardware breakpoint on specified address
+ 
+Memory Maps
+-----------
+ 
+dm: lists memory map of target process
+dmi <address | libname>: lists loaded DLL symbols
+ 
+Memory Dumping
+--------------
+ 
+wtf <filename> <size> @<starting_address>: saves memory region to file
+dmd <filename> @<address>: dumps memory map at given address to a file
+ 
+Misc
+----
+ 
+/A <opcode>: searches for specified opcode on current section
+pf p4 @<address>: retrieves 4 bytes of content from pointer at given address
+*<address>: equivalent to pf p4 @ <address>
+“e cmd.vprompt=px@esp”: In visual mode, it shows the stack on top of the view
